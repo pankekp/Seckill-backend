@@ -13,5 +13,5 @@ import pers.pk.seckill.domain.User;
 public interface UserMapper {
 
     @Select("select * from user where username=#{username} and password=#{password}")
-    public User getUser(User user);
+    User getUser(User user);
 }

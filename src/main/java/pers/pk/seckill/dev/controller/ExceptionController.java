@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import pers.pk.seckill.util.exception.LoginException;
+import pers.pk.seckill.util.exception.SeckillFailedException;
 import pers.pk.seckill.util.pojo.Error;
 import pers.pk.seckill.util.pojo.Result;
 
@@ -18,7 +19,13 @@ public class ExceptionController {
 
     @ExceptionHandler(LoginException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Result<String> loginException() {
+    public Result<String> loginFailed() {
         return Result.error(Error.LOGIN_ERROR);
+    }
+
+    @ExceptionHandler(SeckillFailedException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Result<String> seckillFailed(SeckillFailedException e) {
+        return Result.error(e.getError());
     }
 }

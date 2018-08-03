@@ -9,7 +9,9 @@ public enum Info {
     /**
      * redis set successfully
      */
-    REDIS_SET_OK("OK");
+    REDIS_SET_OK("OK"),
+
+    COOKIE_TOKEN("token");
 
     private String info;
 

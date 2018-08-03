@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pers.pk.seckill.dev.mapper.UserMapper;
 import pers.pk.seckill.dev.service.UserService;
 import pers.pk.seckill.domain.User;
+import pers.pk.seckill.util.redis.RedisUtil;
+import pers.pk.seckill.util.redis.key.UserKey;
 
 /**
  * @author panke
@@ -15,14 +17,21 @@ import pers.pk.seckill.domain.User;
 public class UserServiceImpl implements UserService {
 
     private UserMapper userMapper;
+    private RedisUtil redisUtil;
 
     @Autowired
-    public UserServiceImpl(UserMapper userMapper) {
+    public UserServiceImpl(UserMapper userMapper, RedisUtil redisUtil) {
         this.userMapper = userMapper;
+        this.redisUtil = redisUtil;
     }
 
     @Override
     public User login(User user) {
         return userMapper.getUser(user);
+    }
+
+    @Override
+    public User getUserByToken(String token) {
+        return redisUtil.get(UserKey.TOKEN, token, User.class);
     }
 }
