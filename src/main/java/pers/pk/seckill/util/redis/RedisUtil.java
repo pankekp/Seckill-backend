@@ -38,7 +38,7 @@ public class RedisUtil {
     }
 
     @SuppressWarnings("unchecked")
-    private <T> T strToObj(String str, Class<T> clazz) {
+    public static <T> T strToObj(String str, Class<T> clazz) {
         if (str == null) {
             return null;
         }
@@ -69,7 +69,7 @@ public class RedisUtil {
         }
     }
 
-    private <T> String objToStr(T value) {
+    public static <T> String objToStr(T value) {
         if (value == null) {
             return null;
         }

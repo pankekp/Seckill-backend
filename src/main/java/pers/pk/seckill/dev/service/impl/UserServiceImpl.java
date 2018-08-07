@@ -29,9 +29,4 @@ public class UserServiceImpl implements UserService {
     public User login(User user) {
         return userMapper.getUser(user);
     }
-
-    @Override
-    public User getUserByToken(String token) {
-        return redisUtil.get(UserKey.TOKEN, token, User.class);
-    }
 }

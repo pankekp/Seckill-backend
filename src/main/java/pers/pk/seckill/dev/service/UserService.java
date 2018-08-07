@@ -9,6 +9,4 @@ import pers.pk.seckill.domain.User;
 public interface UserService {
 
     User login(User user);
-
-    User getUserByToken(String token);
 }

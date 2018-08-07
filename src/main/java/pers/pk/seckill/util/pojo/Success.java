@@ -8,9 +8,10 @@ public class Success {
 
     private String message;
 
-    public static Success LOGIN_SUCCESS = new Success("Login success");
-    public static Success QUERY_SUCCESS = new Success("Query success");
-    public static Success SECKILL_SUCCESS = new Success("Seckill success");
+    public static Success LOGIN_SUCCESS = new Success("Login successfully");
+    public static Success QUERY_SUCCESS = new Success("Query successfully");
+    public static Success SECKILL_SUCCESS = new Success("Seckill successfully");
+    public static Success QUEUING = new Success("Queuing");
 
     private Success(String message) {
         this.message = message;

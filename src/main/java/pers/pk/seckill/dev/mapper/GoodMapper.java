@@ -23,6 +23,6 @@ public interface GoodMapper {
     @Select("select g.*, sg.seckill_price, sg.seckill_stock, sg.start, sg.end from seckill_good sg left outer join good g on g.id = sg.id where g.id=#{id}")
     GoodSeckillVo getGoodVo(@Param("id") int goodId);
 
-    @Update("update seckill_good set seckill_stock=seckill_stock-1 where good_id=#{goodId}")
+    @Update("update seckill_good set seckill_stock=seckill_stock-1 where good_id=#{goodId} and seckill_stock>0")
     int updateGoodStock(@Param("goodId") int goodId);
 }

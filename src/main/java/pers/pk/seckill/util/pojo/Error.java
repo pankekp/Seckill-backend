@@ -11,7 +11,8 @@ public class Error {
 
     public static Error LOGIN_ERROR = new Error(500100, "Username or password is incorrect");
     public static Error STOCK_NULL_ERROR = new Error(500201, "The stock is 0 now");
-    public static Error SECKILL_REPEATED_ERROR = new Error(500202, "You have seckilled successfully");
+    public static Error SECKILL_REPEATED_ERROR = new Error(500202, "You can't have a repeated seckill");
+    public static Error SECKILL_FAILED_ERROR = new Error(500203, "Seckill failed");
 
     private Error(Integer code, String message) {
         this.code = code;
