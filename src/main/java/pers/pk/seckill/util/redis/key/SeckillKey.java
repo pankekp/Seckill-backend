@@ -10,5 +10,10 @@ public class SeckillKey extends BasePrefix {
         super(prefix);
     }
 
+    public SeckillKey(int expireSeconds, String prefix) {
+        super(expireSeconds, prefix);
+    }
+
     public static SeckillKey IS_GOOD_OVER = new SeckillKey("isGoodOver");
+    public static SeckillKey ACCESS_LIMIT = new SeckillKey(5, "access");
 }

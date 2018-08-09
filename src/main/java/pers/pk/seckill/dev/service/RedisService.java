@@ -72,4 +72,26 @@ public interface RedisService {
      * @return 仍有商品则返回true
      */
     boolean getGoodStatus(int goodId);
+
+    /**
+     * 根据用户id获取访问次数
+     *
+     * @param userId 用户id
+     * @return 访问次数
+     */
+    Integer getAccessCount(int userId);
+
+    /**
+     * 为此用户设置访问次数
+     *
+     * @param userId 用户id
+     */
+    void initAccessCount(int userId);
+
+    /**
+     * 增加此用户的访问次数
+     *
+     * @param userId 用户id
+     */
+    void incrAccessCount(int userId);
 }

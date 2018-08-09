@@ -17,12 +17,10 @@ import pers.pk.seckill.util.redis.key.UserKey;
 public class UserServiceImpl implements UserService {
 
     private UserMapper userMapper;
-    private RedisUtil redisUtil;
 
     @Autowired
-    public UserServiceImpl(UserMapper userMapper, RedisUtil redisUtil) {
+    public UserServiceImpl(UserMapper userMapper) {
         this.userMapper = userMapper;
-        this.redisUtil = redisUtil;
     }
 
     @Override

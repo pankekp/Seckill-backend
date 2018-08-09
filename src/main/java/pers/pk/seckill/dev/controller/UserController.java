@@ -45,4 +45,18 @@ public class UserController {
         return Result.success(Success.LOGIN_SUCCESS, new User(existUser.getId(), existUser.getUsername(), null));
     }
 
+    @GetMapping("/token")
+    public String token(User user, HttpServletResponse response) {
+        User existUser = userService.login(user);
+        if (existUser == null) {
+            throw new LoginException();
+        }
+        String token = UUID.randomUUID().toString().replace("-", "");
+        redisService.setUser(existUser, token);
+        Cookie cookie = new Cookie("token", token);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        return token;
+    }
+
 }

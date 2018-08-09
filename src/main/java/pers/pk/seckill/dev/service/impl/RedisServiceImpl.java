@@ -65,4 +65,19 @@ public class RedisServiceImpl implements RedisService {
     public boolean getGoodStatus(int goodId) {
         return redisUtil.exist(SeckillKey.IS_GOOD_OVER, goodId + "");
     }
+
+    @Override
+    public Integer getAccessCount(int userId) {
+        return redisUtil.get(SeckillKey.ACCESS_LIMIT, userId + "", Integer.class);
+    }
+
+    @Override
+    public void initAccessCount(int userId) {
+        redisUtil.set(SeckillKey.ACCESS_LIMIT, userId + "", 1);
+    }
+
+    @Override
+    public void incrAccessCount(int userId) {
+        redisUtil.increase(SeckillKey.ACCESS_LIMIT, userId + "");
+    }
 }
